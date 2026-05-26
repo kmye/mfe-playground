@@ -1,5 +1,5 @@
 import { lazy } from "react";
-import { loadRemote as mfLoadRemote } from "@module-federation/enhanced/runtime";
+import { loadRemote as mfLoadRemote } from "@module-federation/runtime";
 
 export function createRemoteComponent(remoteName: string, exposedModule: string) {
   return lazy(async () => {
