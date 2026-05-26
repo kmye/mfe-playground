@@ -8,7 +8,12 @@ import (
 )
 
 func New(targetURL string) http.Handler {
-	target, _ := url.Parse(targetURL)
+	target, err := url.Parse(targetURL)
+	if err != nil {
+		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+			http.Error(w, "proxy target misconfigured", http.StatusBadGateway)
+		})
+	}
 	rp := httputil.NewSingleHostReverseProxy(target)
 
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
