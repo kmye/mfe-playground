@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import { createRemoteComponent } from "./loadRemote";
+import Breadcrumbs from "./Breadcrumbs";
 
 const RemoteOneApp = createRemoteComponent("remote_one", "App");
 const RemoteTwoApp = createRemoteComponent("remote_two", "App");
@@ -12,6 +13,8 @@ export default function App() {
       <nav>
         <Link to="/one">Remote One</Link> | <Link to="/two">Remote Two</Link>
       </nav>
+      <hr />
+      <Breadcrumbs />
       <hr />
       <Suspense fallback={<p>Loading...</p>}>
         <Routes>
