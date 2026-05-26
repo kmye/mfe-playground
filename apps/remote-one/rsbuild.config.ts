@@ -12,9 +12,9 @@ export default defineConfig({
         "./App": "./src/App.tsx",
       },
       shared: {
-        react: { singleton: true, requiredVersion: "^18.3.1" },
-        "react-dom": { singleton: true, requiredVersion: "^18.3.1" },
-        "react-router-dom": { singleton: true, requiredVersion: "^6.28.0" },
+        react: { singleton: true, requiredVersion: "^19.2.6" },
+        "react-dom": { singleton: true, requiredVersion: "^19.2.6" },
+        "react-router-dom": { singleton: true, requiredVersion: "^7.15.1" },
       },
     }),
   ],

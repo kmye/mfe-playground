@@ -12,9 +12,9 @@ export default defineConfig({
         remote_two: "remote_two@http://localhost:3002/mf-manifest.json",
       },
       shared: {
-        react: { singleton: true, requiredVersion: "^18.3.1" },
-        "react-dom": { singleton: true, requiredVersion: "^18.3.1" },
-        "react-router-dom": { singleton: true, requiredVersion: "^6.28.0" },
+        react: { singleton: true, requiredVersion: "^19.2.6" },
+        "react-dom": { singleton: true, requiredVersion: "^19.2.6" },
+        "react-router-dom": { singleton: true, requiredVersion: "^7.15.1" },
       },
     }),
   ],
