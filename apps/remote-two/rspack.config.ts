@@ -1,4 +1,5 @@
 import { defineConfig } from "@rspack/cli";
+import { rspack } from "@rspack/core";
 import { ModuleFederationPlugin } from "@module-federation/enhanced/rspack";
 
 export default defineConfig({
@@ -27,6 +28,9 @@ export default defineConfig({
     ],
   },
   plugins: [
+    new rspack.HtmlRspackPlugin({
+      template: "./public/index.html",
+    }),
     new ModuleFederationPlugin({
       name: "remote_two",
       filename: "remoteEntry.js",
