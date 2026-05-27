@@ -6,8 +6,10 @@ export interface EventMap {
 
 export interface RequestMap {}
 
-export type Listener<T = unknown> = (payload: T) => void;
-export type Handler<Req = unknown, Res = unknown> = (
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type Listener<T = any> = (payload: T) => void;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type Handler<Req = any, Res = any> = (
   payload: Req
 ) => Res | Promise<Res>;
 

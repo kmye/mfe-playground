@@ -30,7 +30,7 @@ class EventBusImpl implements EventBus {
     if (!handler)
       throw new Error(`No handler registered for "${String(type)}"`);
     return Promise.race([
-      Promise.resolve(handler(payload)),
+      Promise.resolve(handler(payload)) as Promise<RequestMap[K] extends { response: infer R } ? R : never>,
       new Promise<never>((_, reject) =>
         setTimeout(
           () => reject(new Error(`Request "${String(type)}" timed out`)),
