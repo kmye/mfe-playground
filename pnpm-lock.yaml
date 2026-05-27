@@ -14,6 +14,9 @@ importers:
 
   apps/host:
     dependencies:
+      '@mfe-poc/platform-sdk':
+        specifier: workspace:*
+        version: link:../../packages/platform-sdk
       react:
         specifier: ^19.2.6
         version: 19.2.6
@@ -48,6 +51,9 @@ importers:
 
   apps/remote-one:
     dependencies:
+      '@mfe-poc/platform-sdk':
+        specifier: workspace:*
+        version: link:../../packages/platform-sdk
       react:
         specifier: ^19.2.6
         version: 19.2.6
@@ -79,6 +85,9 @@ importers:
 
   apps/remote-two:
     dependencies:
+      '@mfe-poc/platform-sdk':
+        specifier: workspace:*
+        version: link:../../packages/platform-sdk
       react:
         specifier: ^19.2.6
         version: 19.2.6
