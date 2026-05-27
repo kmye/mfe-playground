@@ -1,5 +1,18 @@
 import type { BreadcrumbItem, PageTitleData, SlotState } from "./types";
 
+declare global {
+  var __HOST_SLOTS_LOADED__: boolean | undefined;
+}
+
+if (globalThis.__HOST_SLOTS_LOADED__) {
+  console.error(
+    "[@mfe-poc/host-slots] Duplicate instance detected! " +
+      "This means the store is not being shared as a singleton. " +
+      'Ensure every app has `"@mfe-poc/host-slots": { singleton: true }` in its Module Federation shared config.'
+  );
+}
+globalThis.__HOST_SLOTS_LOADED__ = true;
+
 type Listener = (state: SlotState) => void;
 
 let state: SlotState = {
