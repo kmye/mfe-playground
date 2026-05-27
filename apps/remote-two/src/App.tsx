@@ -6,11 +6,11 @@ export default function App() {
   return (
     <div>
       <nav>
-        <Link to="/">Overview</Link> | <Link to="/details">Details</Link>
+        <Link to=".">Overview</Link> | <Link to="details">Details</Link>
       </nav>
       <Routes>
-        <Route path="/" element={<Overview />} />
-        <Route path="/details" element={<Details />} />
+        <Route index element={<Overview />} />
+        <Route path="details" element={<Details />} />
       </Routes>
     </div>
   );
