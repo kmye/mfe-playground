@@ -1,13 +1,12 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useBreadcrumbListener } from "./useBreadcrumbListener";
-
-interface BreadcrumbItem {
-  label: string;
-  path?: string;
-}
+import { useSubscribe } from "@mfe-poc/platform-sdk/react";
+import type { BreadcrumbItem } from "@mfe-poc/platform-sdk";
 
 export default function Breadcrumbs() {
-  const remoteCrumbs = useBreadcrumbListener();
+  const [remoteCrumbs, setRemoteCrumbs] = useState<BreadcrumbItem[]>([]);
+
+  useSubscribe("breadcrumbs", setRemoteCrumbs);
 
   const allCrumbs: BreadcrumbItem[] = [
     { label: "Home", path: "/" },
