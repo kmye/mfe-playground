@@ -10,6 +10,8 @@ export default defineConfig({
       remotes: {
         remote_one: "remote_one@http://localhost:3001/mf-manifest.json",
         remote_two: "remote_two@http://localhost:3002/mf-manifest.json",
+        remote_vue: "remote_vue@http://localhost:3003/mf-manifest.json",
+        remote_svelte: "remote_svelte@http://localhost:3004/mf-manifest.json",
       },
       shared: {
         react: { singleton: true, requiredVersion: "^19.2.6" },
