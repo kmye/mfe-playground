@@ -1,17 +1,12 @@
 import { Link } from "react-router-dom";
-import { useBreadcrumbListener } from "./useBreadcrumbListener";
-
-interface BreadcrumbItem {
-  label: string;
-  path?: string;
-}
+import { useSlotState, type BreadcrumbItem } from "@mfe-poc/host-slots";
 
 export default function Breadcrumbs() {
-  const remoteCrumbs = useBreadcrumbListener();
+  const { breadcrumbs } = useSlotState();
 
   const allCrumbs: BreadcrumbItem[] = [
     { label: "Home", path: "/" },
-    ...remoteCrumbs,
+    ...breadcrumbs,
   ];
 
   return (
