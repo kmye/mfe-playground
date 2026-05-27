@@ -53,16 +53,20 @@ import { useSubscribe, useRequest } from '@mfe-poc/platform-sdk/react';
 
 ### Type Registry
 
+Events registered in this iteration: `breadcrumbs`. The others below are illustrative — teams add entries as they need new cross-app communication.
+
 ```ts
 interface EventMap {
   'breadcrumbs': BreadcrumbItem[];
-  'notification': { message: string; level: 'info' | 'error' };
-  'auth:logout': void;
+  // Future examples (not implemented this iteration):
+  // 'notification': { message: string; level: 'info' | 'error' };
+  // 'auth:logout': void;
 }
 
 interface RequestMap {
-  'get-user': { request: void; response: User };
-  'get-config': { request: { key: string }; response: string | null };
+  // Future examples (not implemented this iteration):
+  // 'get-user': { request: void; response: User };
+  // 'get-config': { request: { key: string }; response: string | null };
 }
 ```
 
