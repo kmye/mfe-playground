@@ -9,7 +9,7 @@ export default defineConfig({
       name: "remote_vue",
       filename: "remoteEntry.js",
       exposes: {
-        "./App": "./src/bootstrap.ts",
+        "./export-app": "./src/export-app.ts",
       },
       shared: {
         vue: { singleton: true, requiredVersion: "^3.5.13" },
