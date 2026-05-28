@@ -1,11 +1,6 @@
-import { Suspense, useState } from "react";
+import { useState } from "react";
 import { Routes, Route, NavLink } from "react-router-dom";
-import { createRemoteComponent } from "./loadRemote";
-import VueWrapper from "./VueWrapper";
-import SvelteWrapper from "./SvelteWrapper";
-
-const RemoteOneApp = createRemoteComponent("remote_one", "App");
-const RemoteTwoApp = createRemoteComponent("remote_two", "App");
+import { RemoteOneApp, RemoteTwoApp, RemoteVueApp, RemoteSvelteApp } from "./remotes";
 
 const navItems = [
   { to: "/one", label: "Remote One" },
@@ -71,30 +66,22 @@ export default function App() {
 
         {/* Main content */}
         <main className="flex-1 overflow-auto bg-gray-50 p-6">
-          <Suspense
-            fallback={
-              <div className="flex items-center justify-center py-12">
-                <p className="text-gray-500">Loading...</p>
-              </div>
-            }
-          >
-            <Routes>
-              <Route
-                path="/"
-                element={
-                  <div className="flex items-center justify-center py-12">
-                    <p className="text-gray-500">
-                      Select a remote app from the sidebar.
-                    </p>
-                  </div>
-                }
-              />
-              <Route path="/one/*" element={<RemoteOneApp />} />
-              <Route path="/two/*" element={<RemoteTwoApp />} />
-              <Route path="/vue/*" element={<VueWrapper />} />
-              <Route path="/svelte/*" element={<SvelteWrapper />} />
-            </Routes>
-          </Suspense>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <div className="flex items-center justify-center py-12">
+                  <p className="text-gray-500">
+                    Select a remote app from the sidebar.
+                  </p>
+                </div>
+              }
+            />
+            <Route path="/one/*" element={<RemoteOneApp basename="/one" />} />
+            <Route path="/two/*" element={<RemoteTwoApp basename="/two" />} />
+            <Route path="/vue/*" element={<RemoteVueApp basename="/vue" />} />
+            <Route path="/svelte/*" element={<RemoteSvelteApp basename="/svelte" />} />
+          </Routes>
         </main>
       </div>
     </div>
