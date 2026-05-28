@@ -1,4 +1,13 @@
 import { createBridgeComponent } from "@module-federation/bridge-react/v19";
+import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 
-export default createBridgeComponent({ rootComponent: App });
+function RootApp() {
+  return (
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  );
+}
+
+export default createBridgeComponent({ rootComponent: RootApp });
