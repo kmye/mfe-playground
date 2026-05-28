@@ -1,0 +1,8 @@
+{
+  "name": "@mfe-poc/platform-types",
+  "private": true,
+  "version": "0.0.0",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "files": ["src"]
+}
