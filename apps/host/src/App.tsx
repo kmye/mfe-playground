@@ -5,8 +5,12 @@ import VueWrapper from "./VueWrapper";
 import SvelteWrapper from "./SvelteWrapper";
 import type { PlatformUser } from "@mfe-poc/platform-types";
 
-const RemoteOneApp = createRemoteComponent("remote_one", "App");
-const RemoteTwoApp = createRemoteComponent("remote_two", "App");
+interface RemoteAppProps {
+  user?: PlatformUser;
+}
+
+const RemoteOneApp = createRemoteComponent<RemoteAppProps>("remote_one", "App");
+const RemoteTwoApp = createRemoteComponent<RemoteAppProps>("remote_two", "App");
 
 const navItems = [
   { to: "/one", label: "Remote One" },

@@ -14,6 +14,9 @@ importers:
 
   apps/host:
     dependencies:
+      '@mfe-poc/platform-types':
+        specifier: workspace:*
+        version: link:../../packages/platform-types
       react:
         specifier: ^19.2.6
         version: 19.2.6
@@ -54,6 +57,9 @@ importers:
 
   apps/remote-one:
     dependencies:
+      '@mfe-poc/platform-types':
+        specifier: workspace:*
+        version: link:../../packages/platform-types
       react:
         specifier: ^19.2.6
         version: 19.2.6
@@ -110,6 +116,9 @@ importers:
 
   apps/remote-two:
     dependencies:
+      '@mfe-poc/platform-types':
+        specifier: workspace:*
+        version: link:../../packages/platform-types
       react:
         specifier: ^19.2.6
         version: 19.2.6
@@ -163,6 +172,8 @@ importers:
       vue-tsc:
         specifier: ^2.2.8
         version: 2.2.12(typescript@5.9.3)
+
+  packages/platform-types: {}
 
 packages:
 

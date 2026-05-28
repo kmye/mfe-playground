@@ -1,12 +1,17 @@
 import { useEffect, useRef } from "react";
 import { loadRemote } from "@module-federation/runtime";
+import type { PlatformUser } from "@mfe-poc/platform-types";
 
 interface SvelteRemoteModule {
-  mount: (el: HTMLElement) => void;
+  mount: (el: HTMLElement, opts?: { basePath?: string; user?: PlatformUser }) => void;
   unmount: () => void;
 }
 
-export default function SvelteWrapper() {
+interface SvelteWrapperProps {
+  user?: PlatformUser;
+}
+
+export default function SvelteWrapper({ user }: SvelteWrapperProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const moduleRef = useRef<SvelteRemoteModule | null>(null);
 
@@ -17,7 +22,7 @@ export default function SvelteWrapper() {
       if (cancelled || !containerRef.current) return;
       const svelteModule = mod as SvelteRemoteModule;
       moduleRef.current = svelteModule;
-      svelteModule.mount(containerRef.current);
+      svelteModule.mount(containerRef.current, { basePath: "/svelte", user });
     });
 
     return () => {
