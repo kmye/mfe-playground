@@ -1,0 +1,7 @@
+{
+  "shared": {
+    "react": { "requiredVersion": "^19.2.6" },
+    "react-dom": { "requiredVersion": "^19.2.6" },
+    "react-router-dom": { "requiredVersion": "^7.15.1" }
+  }
+}
