@@ -3,6 +3,7 @@ import { Routes, Route, NavLink } from "react-router-dom";
 import { createRemoteComponent } from "./loadRemote";
 import VueWrapper from "./VueWrapper";
 import SvelteWrapper from "./SvelteWrapper";
+import type { PlatformUser } from "@mfe-poc/platform-types";
 
 const RemoteOneApp = createRemoteComponent("remote_one", "App");
 const RemoteTwoApp = createRemoteComponent("remote_two", "App");
@@ -14,8 +15,15 @@ const navItems = [
   { to: "/svelte", label: "Remote Svelte" },
 ];
 
+// Hardcoded mock user for development — replace with real IdP integration
+const mockUser: PlatformUser = {
+  name: "Jane Developer",
+  email: "jane@example.com",
+};
+
 export default function App() {
   const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [user] = useState<PlatformUser>(mockUser);
 
   return (
     <div className="flex h-screen flex-col">
@@ -41,6 +49,7 @@ export default function App() {
           </svg>
         </button>
         <h1 className="text-lg font-semibold text-gray-900">MFE Host</h1>
+        <span className="ml-auto text-sm text-gray-500">{user.name}</span>
       </header>
 
       <div className="flex flex-1 overflow-hidden">
@@ -89,10 +98,10 @@ export default function App() {
                   </div>
                 }
               />
-              <Route path="/one/*" element={<RemoteOneApp />} />
-              <Route path="/two/*" element={<RemoteTwoApp />} />
-              <Route path="/vue/*" element={<VueWrapper />} />
-              <Route path="/svelte/*" element={<SvelteWrapper />} />
+              <Route path="/one/*" element={<RemoteOneApp user={user} />} />
+              <Route path="/two/*" element={<RemoteTwoApp user={user} />} />
+              <Route path="/vue/*" element={<VueWrapper user={user} />} />
+              <Route path="/svelte/*" element={<SvelteWrapper user={user} />} />
             </Routes>
           </Suspense>
         </main>
