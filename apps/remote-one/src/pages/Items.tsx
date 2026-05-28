@@ -15,7 +15,7 @@ export default function Items() {
       <ul>
         {items.map((item) => (
           <li key={item.id}>
-            <Link to={`items/${item.id}`}>{item.name}</Link>
+            <Link to={`/items/${item.id}`}>{item.name}</Link>
           </li>
         ))}
       </ul>
