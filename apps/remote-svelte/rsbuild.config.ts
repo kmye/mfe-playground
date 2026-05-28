@@ -9,7 +9,7 @@ export default defineConfig({
       name: "remote_svelte",
       filename: "remoteEntry.js",
       exposes: {
-        "./App": "./src/bootstrap.ts",
+        "./export-app": "./src/export-app.ts",
       },
       shared: {
         "svelte-spa-router": { singleton: true, requiredVersion: "^5.1.0" },
