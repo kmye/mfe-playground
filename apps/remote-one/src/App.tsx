@@ -3,6 +3,7 @@ import Dashboard from "./pages/Dashboard";
 import Settings from "./pages/Settings";
 import Items from "./pages/Items";
 import ItemDetail from "./pages/ItemDetail";
+import NotFound from "./pages/NotFound";
 
 function Layout() {
   return (
@@ -24,6 +25,7 @@ export default function App() {
           <Route path="settings" element={<Settings />} />
           <Route path="items" element={<Items />} />
           <Route path="items/:id" element={<ItemDetail />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </div>
