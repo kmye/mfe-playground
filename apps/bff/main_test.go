@@ -12,10 +12,14 @@ import (
 
 func TestConfigEndpoint(t *testing.T) {
 	os.Setenv("REMOTE_ONE_URL", "http://one.test/mf-manifest.json")
+	os.Setenv("REMOTE_ONE_VERSION", "1.2.3")
 	os.Setenv("REMOTE_TWO_URL", "http://two.test/mf-manifest.json")
+	os.Setenv("REMOTE_TWO_VERSION", "2.0.0")
 	defer func() {
 		os.Unsetenv("REMOTE_ONE_URL")
+		os.Unsetenv("REMOTE_ONE_VERSION")
 		os.Unsetenv("REMOTE_TWO_URL")
+		os.Unsetenv("REMOTE_TWO_VERSION")
 	}()
 
 	cfg := config.Load()
@@ -36,11 +40,25 @@ func TestConfigEndpoint(t *testing.T) {
 	}
 
 	var resp struct {
-		Remotes map[string]string `json:"remotes"`
+		Remotes map[string]config.RemoteEntry `json:"remotes"`
 	}
-	json.NewDecoder(rec.Body).Decode(&resp)
+	if err := json.NewDecoder(rec.Body).Decode(&resp); err != nil {
+		t.Fatalf("failed to decode response: %v", err)
+	}
 
-	if resp.Remotes["remote-one"] != "http://one.test/mf-manifest.json" {
-		t.Errorf("unexpected remote-one: %s", resp.Remotes["remote-one"])
+	entry := resp.Remotes["remote_one"]
+	if entry.URL != "http://one.test/mf-manifest.json" {
+		t.Errorf("unexpected remote_one URL: %s", entry.URL)
+	}
+	if entry.Version != "1.2.3" {
+		t.Errorf("unexpected remote_one version: %s", entry.Version)
+	}
+
+	entry2 := resp.Remotes["remote_two"]
+	if entry2.URL != "http://two.test/mf-manifest.json" {
+		t.Errorf("unexpected remote_two URL: %s", entry2.URL)
+	}
+	if entry2.Version != "2.0.0" {
+		t.Errorf("unexpected remote_two version: %s", entry2.Version)
 	}
 }
